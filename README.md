@@ -89,3 +89,7 @@ Lengkapi kode program untuk menu lainnya yang ada pada Controller Page, sehingga
 
 ![9](https://user-images.githubusercontent.com/56438848/122508832-d542df00-d02c-11eb-9a17-d844fe4611c4.JPG)
 
+</br>
+</br>
+Akses full file
+https://drive.google.com/drive/folders/1a9dQBmXQ8vKfxCNv_kuaf2mN3ZcamSSy?usp=sharing
