@@ -49,7 +49,7 @@ Buat file baru dengan nama <b>page.php</b> pada direktori Controller, masukkan k
 
 
 > - <b>Tambahan</b> </br>
-Ketika halaman tidak muncul dan masih error, coba untuk mengaktifkan perintah <b>php spark serve</b> pada command prompt seperti gambar ini.
+Ketika halaman tidak muncul dan masih error, coba untuk mengaktifkan perintah <b>php spark serve</b> pada command prompt seperti gambar ini. Pastikan untuk tetap berjalan pada latar belakang.
 ![8 0](https://user-images.githubusercontent.com/56438848/122505651-fb658080-d026-11eb-81bf-9e69aef6a0b1.JPG)
 
 
@@ -62,11 +62,30 @@ Setelah diubah
 ![8 2](https://user-images.githubusercontent.com/56438848/122506268-2b615380-d028-11eb-90b7-5d03a648bac3.JPG)
 
 + <b>Membuat View</b>
+Buat file baru dengan nama <b>about.php</b> pada direktori <b>app/views</b>. Lihat gambar untuk lebih jelas.
+![8 3](https://user-images.githubusercontent.com/56438848/122507617-b6dbe400-d02a-11eb-80fa-d11e9e2d929b.JPG)
+</br>
+</br>
+</br>
 
 
+# **Membuat Layout Web dengan CSS**<br/>
+</br>
 
++ Buat file css pada direktori <b>Public</b> dengan nama <b>style.css</b>.
+> <i>copy file layout dari Praktikum 4</i>
+![8 1](https://user-images.githubusercontent.com/56438848/122508213-cd366f80-d02b-11eb-9452-960209b920cd.JPG)
 
++ Buat folder <b>template</b> pada direktori view. Kemudian buat file <b>header.php</b> dan <b>footer.php</b>
+![8 2](https://user-images.githubusercontent.com/56438848/122508398-269e9e80-d02c-11eb-8afc-813243eb24f8.JPG)
 
++ Isikan kode seperti dibawah ini, bisa diakses pada file diatas. Save dan buka url http://localhost:8080/about
+![8 3](https://user-images.githubusercontent.com/56438848/122508436-33bb8d80-d02c-11eb-9083-d9fc382d11ac.JPG)
+</br>
+</br>
 
+# **Tugas**<br/>
+Lengkapi kode program untuk menu lainnya yang ada pada Controller Page, sehingga semua link pada navigasi header dapat menampilkan tampilan dengan layout yang sama.
 
+![9](https://user-images.githubusercontent.com/56438848/122508832-d542df00-d02c-11eb-9a17-d844fe4611c4.JPG)
 
