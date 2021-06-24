@@ -126,7 +126,14 @@ CREATE DATABASE lab_ci4
 ```
 
 ``` Membuat Tabel
-CREATE TABLE artikel ( id INT(11) auto_increment, judul VARCHAR(200) NOT NULL, isi TEXT, gambar VARCHAR(200), status TINYINT(1) DEFAULT 0, slug VARCHAR(200), PRIMARY KEY(id) );
+CREATE TABLE artikel ( 
+    id INT(11) auto_increment, 
+    judul VARCHAR(200) NOT NULL, 
+    isi TEXT, gambar VARCHAR(200), 
+    status TINYINT(1) DEFAULT 0, 
+    slug VARCHAR(200), 
+    PRIMARY KEY(id) 
+);
 ``` 
 ![1 Koneksi Database  env](https://user-images.githubusercontent.com/56438848/123295366-da79bf80-d53f-11eb-9667-fdf4911cae49.jpg)
 
