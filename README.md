@@ -446,3 +446,5 @@ $routes->group('admin', function($routes) {
 </br>
 
 > <i>Jangan lupa untuk selalu menyimpan file sebelum refresh halaman web. Jika error, coba teliti tiap langkah pada file dan folder</i>
+
+> <i>Link File https://drive.google.com/drive/folders/1C4ssoDk7Y3R4g6gbkW8vyTbdd90_e1ep?usp=sharing</i>
