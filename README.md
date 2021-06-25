@@ -116,8 +116,11 @@ Lengkapi kode program untuk menu lainnya yang ada pada Controller Page, sehingga
 ![9](https://user-images.githubusercontent.com/56438848/122508832-d542df00-d02c-11eb-9a17-d844fe4611c4.JPG)
 
 
-# **LANJUTAN (CRUD)**<br/>
+
+
+# **LANJUTAN CRUD (Create, Read, Update, Delete)**<br/>
 </br>
+
 
 + Membuat Database dan Tabel pada <b>phpmyadmin</b> dan mengatur koneksi Database
 
@@ -136,6 +139,7 @@ CREATE TABLE artikel (
 );
 ``` 
 ![1 Koneksi Database  env](https://user-images.githubusercontent.com/56438848/123295366-da79bf80-d53f-11eb-9667-fdf4911cae49.jpg)
+
 
 + Membuat Model
 Buat file baru pada direktori/folder <b>app/Models</b> dengan nama <b>ArtikelModel.php</b>
@@ -156,6 +160,7 @@ class ArtikelModel extends Model
 
 } 
 ```
+
 
 + Membuat Controller
 Buat controller baru dengan nama <b>Artikel.php</b> pada direktori/folder <b>app/Controller</b>
@@ -179,8 +184,9 @@ class Artikel extends BaseController
 }
 ```
 
+
 + Membuat View
-Buat direktori/folder baru dengan nama <b>artikel</b> didalam direktori/folder <b>app/Views</b>, kemudian buat file baru dengan nama <b>index.php</b>.
+Buat direktori/folder baru dengan nama <b>artikel</b> didalam direktori/folder <b>app/Views</b>, kemudian buat file baru dengan nama <b>index.php</b>. Jangan lupa menambahkan kode pada file Routing jika tidak muncul sesuai dengan gambar dibawah.
 
 ```
 <?= $this->include('template/header'); ?> 
@@ -201,13 +207,242 @@ Buat direktori/folder baru dengan nama <b>artikel</b> didalam direktori/folder <
 
 <?= $this->include('template/footer'); ?> 
 ```
+![5 Buat Routing Artikel](https://user-images.githubusercontent.com/56438848/123397957-376f8700-d5cd-11eb-8930-9038cffbea82.jpg)
 
 
++ Menambahkan data pada database agar dapat menampilkan data pada halaman artikel.
+
+```
+INSERT INTO artikel (judul, isi, slug) 
+VALUE ('Artikel pertama', 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting.
+Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, 
+saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf.', 'artikel-pertama'), 
+('Artikel kedua', 'Tidak seperti anggapan banyak orang, Lorem Ipsum bukanlah teks-teks yang diacak. 
+Ia berakar dari sebuah naskah sastra latin klasik dari era 45 sebelum masehi, hingga bisa dipastikan usianya telah mencapai lebih dari 2000 tahun.', 'artikel-kedua');
+```
+![6 1](https://user-images.githubusercontent.com/56438848/123398466-c5e40880-d5cd-11eb-93a7-316e5631f3e1.JPG)
+![6 2](https://user-images.githubusercontent.com/56438848/123398228-79003200-d5cd-11eb-899c-7e2646748fde.JPG)
 
 
++ Membuat Tampilan Detail Artikel
+Pada saat judul berita di klik, maka akan diarahkan ke halaman yang berbeda. Tambahkan kode berikut pada <b>app/Controller/Artikel.php</b>
+
+```
+    public function view($slug)
+    {
+        $model = new ArtikelModel();
+        $artikel = $model->where([
+            'slug' => $slug
+        ])->first();
+
+        // Menampilkan error apabila data tidak ada.
+        if (!$artikel)
+        {
+            throw PageNotFoundException::forPageNotFound();
+        }
+
+        $title = $artikel['judul'];
+        return view('artikel/detail', compact('artikel', 'title'));
+    }
+```
+
+
++ Membuat View Detail
+Membuat view baru untuk halaman detail. Buat file baru pada direktori <b>app/Views/artikel</b> dengan nama <b>detail.phpl</b>
+```
+<?= $this->include('template/header'); ?> 
+
+<article class="entry"> 
+    <h2><?= $artikel['judul']; ?></h2> 
+    <img src="<?= base_url('/gambar/' . $artikel['gambar']);?>" alt="<?= $artikel['judul']; ?>"> 
+    <p><?= $row['isi']; ?></p> 
+</article> 
+
+<?= $this->include('template/footer'); ?> 
+```
+
++ Membuat Routing
+Buka file <b>app/config/Routes.php</b> kemudian tambahkan routing code ini untuk artikel detail.
+```
+$routes->get('/artikel/(:any)', 'Artikel::view/$1');
+```
+![Tambahan](https://user-images.githubusercontent.com/56438848/123399507-e1034800-d5ce-11eb-948d-eeab43094868.jpg)
+
+
++ Membuat menu admin
+Tambahkan method baru pada <b>app/Controllers/Artikel.php</b>
+```
+ public function admin_index() 
+    { 
+        $title = 'Daftar Artikel'; 
+        $model = new ArtikelModel(); 
+        $artikel = $model->findAll(); 
+        return view('artikel/admin_index', compact('artikel', 'title')); 
+    } 
+```
+![Tambahan 2](https://user-images.githubusercontent.com/56438848/123400380-e6ad5d80-d5cf-11eb-863b-f3f171f98a1c.JPG)
+
+
++ Selanjutnya buat view untuk tampilan admin dengan nama <b>admin_index..php</b> pada direktri <b>app/Views/artikel</b>
+```
+<?= $this->include('template/admin_header'); ?>
+
+<table class="table">
+    <thread>
+        <tr>
+            <th>ID</th>
+            <th>ID</th>
+            <th>Status</th>
+            <th>Aksi</th>
+        <tr>
+    </thread>
+    <tbody>
+    <?php if($artikel): foreach($artikel as $row): ?>
+    <tr>
+        <td><?= $row['id']; ?></td>
+        <td>
+            <b><?= $row['judul']; ?></b>
+            <p><small><?= substr($row['isi'], 0, 50); ?></small></p>
+            </td>
+            <td><?= $row['status']; ?></td>
+            <td>
+                <a class="btn" href="<?= base_url('/admin/artikel/edit/' . $row['id']);?>">Ubah</a>
+                <a class="btn btn-danger" onclick="return confirm('Yakin menghapus data?');" href="
+                    <?= base_url('/admin/artikel/delete/' . $row['id']);?>">Hapus</a>
+            </td>
+        </tr>
+        <?php endforeach; else: ?>
+        <tr>
+            <td colspan="4">Belum ada data.</td>
+        </tr>
+    <?php endif; ?>
+    </tbody>
+</table> 
+
+<?= $this->include('template/admin_footer'); ?> 
+```
+![Tambahan 3](https://user-images.githubusercontent.com/56438848/123400646-2ffdad00-d5d0-11eb-9483-582bb80ac9c6.JPG)
+
+
++ Tambahkan Routing pada <b>app/Config/Routes.php</b>
+```
+$routes->group('admin', function($routes) { 
+	$routes->get('artikel', 'Artikel::admin_index'); 
+	$routes->add('artikel/add', 'Artikel::add'); 
+	$routes->add('artikel/edit/(:any)', 'Artikel::edit/$1'); 
+	$routes->get('artikel/delete/(:any)', 'Artikel::delete/$1'); 
+	}); 
+```
+![Tambahan 4](https://user-images.githubusercontent.com/56438848/123400977-88cd4580-d5d0-11eb-879c-12389e8ae0a3.JPG)
+![9](https://user-images.githubusercontent.com/56438848/123401115-aac6c800-d5d0-11eb-9ab0-b04989296ce4.JPG)
+
+
++ Tambah Data Artikel pada <b>app/Controllers/Artikel.php</b>
+```
+    public function add() 
+    { 
+        // validasi data. 
+        $validation = \Config\Services::validation(); 
+        $validation->setRules(['judul' => 'required']); 
+        $isDataValid = $validation->withRequest($this->request)->run(); 
+        
+        if ($isDataValid) 
+        { 
+            $artikel = new ArtikelModel(); 
+            $artikel->insert([ 
+                'judul' => $this->request->getPost('judul'), 
+                'isi' => $this->request->getPost('isi'), 
+                'slug' => url_title($this->request->getPost('judul')), 
+            ]); 
+            return redirect('admin/artikel'); 
+        } 
+        $title = "Tambah Artikel"; 
+        return view('artikel/form_add', compact('title')); 
+        } 
+```
+![Tambahan 5](https://user-images.githubusercontent.com/56438848/123401534-1a3cb780-d5d1-11eb-88e0-1835b8f119bb.JPG)
+
++ Buat view untuk form tambah dengan nama <b>form_add.php</b> pada <app/Views/artikel>
+```
+<?= $this->include('template/admin_header'); ?>
+
+<h2><?= $title; ?></h2>
+<form action="" method="post">
+    <p>
+        <input type="text" name="judul">
+    </p>
+    <p>
+        <textarea name="isi" cols="50" rows="10"></textarea>
+    </p>
+    <p><input type="submit" value="Kirim" class="btn btn-large"></p>
+</form>
+
+<?= $this->include('template/admin_footer'); ?>
+```
+![10](https://user-images.githubusercontent.com/56438848/123401928-6ee03280-d5d1-11eb-8af8-afb5d0785b74.JPG)
+
+
++ Menambah Data edit dengan menambahkan fungsi pada <b>app/Controllers/Artikel.php</b>
+```
+        public function edit($id) 
+        { 
+            $artikel = new ArtikelModel(); 
+
+            // validasi data. 
+            $validation = \Config\Services::validation(); 
+            $validation->setRules(['judul' => 'required']); 
+            $isDataValid = $validation->withRequest($this->request)->run(); 
+
+            if ($isDataValid) 
+            { 
+                $artikel->update($id, [ 
+                    'judul' => $this->request->getPost('judul'), 
+                    'isi' => $this->request->getPost('isi'), 
+                ]); 
+                return redirect('admin/artikel'); 
+            } 
+
+            // ambil data lama 
+            $data = $artikel->where('id', $id)->first(); 
+            $title = "Edit Artikel"; 
+            return view('artikel/form_edit', compact('title', 'data')); 
+        } 
+```
+![Tambahan 6](https://user-images.githubusercontent.com/56438848/123402735-3ee55f00-d5d2-11eb-80a1-c799bf5170e5.JPG)
+
+
++ Buat view untuk form tambah pada direktori <b>app/Views/artikel</b> dengan nama <b>form_edit.php</b>
+```
+<?= $this->include('template/admin_header'); ?>
+
+<h2><?= $title; ?></h2>
+<form action="" method="post">
+    <p>
+        <input type="text" name="judul" value="<?= $data['judul'];?>" >
+    </p>
+    <p>
+        <textarea name="isi" cols="50" rows="10"><?=$data['isi'];?></textarea>
+    </p>
+    <p><input type="submit" value="Kirim" class="btn btn-large"></p>
+</form>
+<?= $this->include('template/admin_footer'); ?>
+```
+![11](https://user-images.githubusercontent.com/56438848/123403346-e2367400-d5d2-11eb-8e09-c9df01b99ecc.JPG)
+
+
++ Tambahkan fungsi delete pada <b>app/Controllers/Artikel.php</b>
+```
+        public function delete($id)
+        {
+            $artikel = new ArtikelModel();
+            $artikel->delete($id);
+            return redirect('admin/artikel');
+        }
+```
+![Tambahan 7](https://user-images.githubusercontent.com/56438848/123404335-2d508700-d5d3-11eb-94cc-cd9842e4343a.JPG)
 
 
 </br>
 </br>
 
-> <i>Akses full file - https://drive.google.com/drive/folders/1a9dQBmXQ8vKfxCNv_kuaf2mN3ZcamSSy?usp=sharing </i>
+> <i>Jangan lupa untuk selalu menyimpan file sebelum refresh halaman web. Jika error, coba teliti tiap langkah pada file dan folder</i>
