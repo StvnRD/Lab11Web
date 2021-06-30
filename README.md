@@ -442,6 +442,187 @@ $routes->group('admin', function($routes) {
 ![Tambahan 7](https://user-images.githubusercontent.com/56438848/123404335-2d508700-d5d3-11eb-94cc-cd9842e4343a.JPG)
 
 
+
+# **LANJUTAN - LOGIN**<br/>
+</br>
+
++ Membuat Tabel User
+Pada database lab_ci4, buat tabel baru dengan nama <b><i>user</i></b>. Dan kemudian buat file baru pada direktori <b>app/Models</b> dengan nama <b>UserModel.php</b>
+![1](https://user-images.githubusercontent.com/56438848/123954781-fdd6bb80-d9d2-11eb-94e5-3710d492405b.JPG)
+``` MEMBUAT TABEL USER
+
+CREATE TABLE user ( 
+	id INT(11) auto_increment, 
+	username VARCHAR(200) NOT NULL, 
+	useremail VARCHAR(200), 
+	userpassword VARCHAR(200), 
+	PRIMARY KEY(id) 
+);
+```
+
+```MEMBUAT MODEL
+
+<?php
+namespace App\Models;
+use CodeIgniter\Model;
+class UserModel extends Model
+{
+    protected $table = 'user';
+    protected $primaryKey = 'id';
+    protected $useAutoIncrement = true; 
+    protected $allowedFields = ['username', 'useremail', 'userpassword'];
+}
+```
+
++ Membuat Control User
+Buat Controller baru dengan nama User.php pada direktori <b>app/Controllers</b>. Kemudian tambahkan method <b>index()</b> untuk menampilkan daftar user, dan method
+<b>login()</b> untuk proses login.
+![2](https://user-images.githubusercontent.com/56438848/123955279-a258fd80-d9d3-11eb-8dd0-ef695c4de861.JPG)
+
+```
+<?php 
+namespace App\Controllers; 
+use App\Models\UserModel; 
+class User extends BaseController 
+{ 
+    public function index() 
+    {  
+        $title = 'Daftar User'; 
+        $model = new UserModel(); 
+        $users = $model->findAll(); 
+        return view('user/index', compact('users', 'title')); 
+    }
+
+    public function login() 
+    { 
+        helper(['form']); 
+        $email = $this->request->getPost('email'); 
+        $password = $this->request->getPost('password'); 
+        if (!$email) 
+        { 
+            return view('user/login'); 
+        } 
+
+        $session = session(); 
+        $model = new UserModel(); 
+        $login = $model->where('useremail', $email)->first(); 
+        if ($login) 
+        { 
+            $pass = $login['userpassword']; 
+            if (password_verify($password, $pass)) 
+            { 
+                $login_data = [ 
+                'user_id' => $login['id'], 
+                'user_name' => $login['username'], 
+                'user_email' => $login['useremail'], 
+                'logged_in' => TRUE, 
+            ]; 
+            $session->set($login_data); 
+            return redirect('admin/artikel'); 
+        } 
+        else 
+        { 
+            $session->setFlashdata("flash_msg", "Password salah."); 
+            return redirect()->to('/user/login'); 
+        } 
+    } 
+    else 
+    { 
+            session->setFlashdata("flash_msg", "email tidak terdaftar."); 
+            return redirect()->to('/user/login'); 
+        } 
+    }
+} 
+```
+
++ Membuat View Login
+Buat direktori baru dengan nama user pada direktori <b>app/views</b>, kemudian buat file baru dengan nama <b>login.php</b>.
+![3](https://user-images.githubusercontent.com/56438848/123955827-4478e580-d9d4-11eb-8b7c-bd1965191e94.JPG)
+```
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8"> 
+    <title>Login</title> 
+    <link rel="stylesheet" href="<?= base_url('/style.css');?>"> 
+</head> 
+<body> 
+    <div id="login-wrapper"> 
+            <h1>Sign In</h1> 
+            <?php if(session()->getFlashdata('flash_msg')):?> 
+                <div class="alert alert-danger"><?= session()->getFlashdata('flash_msg') ?></div> 
+            <?php endif;?> 
+            <form action="" method="post"> 
+                <div class="mb-3"> 
+                    <label for="InputForEmail" class="form-label">Email address</label> 
+                    <input type="email" name="email" class="form-control" id="InputForEmail" value="<?= set_value('email') ?>"> 
+                </div> 
+                <div class="mb-3"> 
+                    <label for="InputForPassword" class="form-label">Password</label> 
+                    <input type="password" name="password" class="form-control" id="InputForPassword"> 
+                </div> 
+                <button type="submit" class="btn btn-primary">Login</button> 
+            </form> 
+    </div> 
+</body> 
+</html> 
+```
+
++ Membuat Database Seeder
+Biasanya digunakan untuk membuat data dummy. Untuk keperluan ujicoba modul login, kita perlu memasukkan data user dan password kedaalam database. Untuk itu buat database seeder untuk tabel user. Buka CLI, kemudian tulis perintah berikut:
+```php spark make:seeder UserSeeder```
+![4](https://user-images.githubusercontent.com/56438848/123956307-bea96a00-d9d4-11eb-89ef-51a3a362d87a.JPG)
+Selanjutnya, buka file <b>UserSeeder.php</b> yang berada di lokasi direktori <b>/app/Database/Seeds/UserSeeder.php</b> kemudian isi dengan kode berikut:
+```<?php
+
+namespace App\Database\Seeds;
+
+use CodeIgniter\Database\Seeder;
+
+class UserSeeder extends Seeder
+{
+	public function run()
+	{
+		$model = model('UserModel');
+		$model->insert([
+			'username' => 'admin',
+			'useremail' => 'admin@email.com',
+			'userpassword' => password_hash('admin123', PASSWORD_DEFAULT),
+		]);
+	}
+}
+```
+![5](https://user-images.githubusercontent.com/56438848/123956420-e26cb000-d9d4-11eb-9278-9a16216d511c.JPG)
+
+Selanjutnya buka kembali CLI dan ketik perintah berikut:
+```php spark db:seed UserSeeder```
+![6](https://user-images.githubusercontent.com/56438848/123956514-f6b0ad00-d9d4-11eb-87e4-31895f130423.JPG)
+
+
++ Uji Coba Login
+Buka url http://localhost:8080/user/login seperti berikut:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </br>
 </br>
 
