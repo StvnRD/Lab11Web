@@ -442,7 +442,7 @@ $routes->group('admin', function($routes) {
 
 
 
-# **=============== LANJUTAN - LOGIN ===============**<br/>
+# **============== LANJUTAN - LOGIN ==============**<br/>
 </br>
 
 + Membuat Tabel User
