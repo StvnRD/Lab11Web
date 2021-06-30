@@ -116,7 +116,7 @@ Buat file baru dengan nama <b>about.php</b> pada direktori <b>app/views</b>. Lih
 </br>
 </br>
 
-# **========== Tugas ==========**
+# **==================== Tugas ====================**
 Lengkapi kode program untuk menu lainnya yang ada pada Controller Page, sehingga semua link pada navigasi header dapat menampilkan tampilan dengan layout yang sama.
 
 ![9](https://user-images.githubusercontent.com/56438848/122508832-d542df00-d02c-11eb-9a17-d844fe4611c4.JPG)
