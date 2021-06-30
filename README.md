@@ -164,7 +164,6 @@ class ArtikelModel extends Model
 
 + Membuat Controller
 Buat controller baru dengan nama <b>Artikel.php</b> pada direktori/folder <b>app/Controller</b>
-
 ```
 <?php
 
@@ -361,6 +360,7 @@ $routes->group('admin', function($routes) {
         } 
 ```
 ![Tambahan 5](https://user-images.githubusercontent.com/56438848/123401534-1a3cb780-d5d1-11eb-88e0-1835b8f119bb.JPG)
+
 
 + Buat view untuk form tambah dengan nama <b>form_add.php</b> pada <app/Views/artikel>
 ```
