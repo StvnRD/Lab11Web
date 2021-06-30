@@ -22,13 +22,17 @@ Ada beberapa ekstensi lainnya juga untuk pengembangan Codeinteger, seperti berik
 + <b>Menjalankan CLI (Command Line Interface)</b>
 </br>
 Buka XAMPP Control Panel, pilih <b>Shell</b> untuk membuka terminal/command prompt, arahkan sesuai dengan direktori folder <b>lab11_ci</b> seperti pada gambar ini. Perintah yang dapat dijalankan untuk memanggil CLI Codeinteegr adalah <b><i> php spark </b></i>
+
 ![2](https://user-images.githubusercontent.com/56438848/122503373-842ded80-d022-11eb-9d95-f5edbf912b42.JPG)
 
-
+</br>
 + <b>Mengaktifkan Mode Debugging</b>
 </br>
 Codeinteger menyediakan firut <b>Debugging</b> untuk memudahkan developer untuk mengetahui pesan error. Semua jenis error akan ditampilkan. Untuk mengaktifkannya, ubah nilai konfigurasi pada environtmen variable <b>CI_ENVIRONMENT</b> menjadi <b>development</b> seperti pada gambar ini. Dan ubah nama file <b> env </b> menjadi <b> .env </b>
+
 ![4](https://user-images.githubusercontent.com/56438848/122504534-b2143180-d024-11eb-8f21-21592bb5092e.jpg)
+
+</br>
 
 Error sebelum diubah
 ![4 2](https://user-images.githubusercontent.com/56438848/122504640-e0920c80-d024-11eb-9221-c3ad0fd5380b.JPG)
@@ -79,16 +83,20 @@ Ketika halaman tidak muncul dan masih error, coba untuk mengaktifkan perintah <b
 + <b> Auto Routing</b>
 </br>
 Auto Routing secara default sudah aktif, untuk mengubah nilai variablenya dapat mengubah <b>true</b> menjadi </b>false<b>. </br>
-Sebelum diubah
+Sebelum diubah.
+
 ![8 1](https://user-images.githubusercontent.com/56438848/122506264-29979000-d028-11eb-8c28-19d906f1caad.JPG)
 
-Setelah diubah
+Setelah diubah.
+
 ![8 2](https://user-images.githubusercontent.com/56438848/122506268-2b615380-d028-11eb-90b7-5d03a648bac3.JPG)
 
 + <b>Membuat View</b>
 </br>
 Buat file baru dengan nama <b>about.php</b> pada direktori <b>app/views</b>. Lihat gambar untuk lebih jelas.
+
 ![8 3](https://user-images.githubusercontent.com/56438848/122507617-b6dbe400-d02a-11eb-80fa-d11e9e2d929b.JPG)
+
 </br>
 </br>
 </br>
@@ -97,9 +105,7 @@ Buat file baru dengan nama <b>about.php</b> pada direktori <b>app/views</b>. Lih
 # **Membuat Layout Web dengan CSS**<br/>
 </br>
 
-+ Buat file css pada direktori <b>Public</b> dengan nama <b>style.css</b>.
-</br>
-> <i>copy file layout dari Praktikum 4</i>
++ Buat file css pada direktori <b>Public</b> dengan nama <b>style.css</b>. <i>Copy file layout dari Praktikum 4</i>.
 ![8 1](https://user-images.githubusercontent.com/56438848/122508213-cd366f80-d02b-11eb-9452-960209b920cd.JPG)
 
 + Buat folder <b>template</b> pada direktori view. Kemudian buat file <b>header.php</b> dan <b>footer.php</b>
@@ -110,7 +116,7 @@ Buat file baru dengan nama <b>about.php</b> pada direktori <b>app/views</b>. Lih
 </br>
 </br>
 
-# ** Tugas**<br/>
+# **========== Tugas ==========**
 Lengkapi kode program untuk menu lainnya yang ada pada Controller Page, sehingga semua link pada navigasi header dapat menampilkan tampilan dengan layout yang sama.
 
 ![9](https://user-images.githubusercontent.com/56438848/122508832-d542df00-d02c-11eb-9a17-d844fe4611c4.JPG)
