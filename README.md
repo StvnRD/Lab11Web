@@ -118,7 +118,7 @@ Lengkapi kode program untuk menu lainnya yang ada pada Controller Page, sehingga
 
 
 
-# **=============== LANJUTAN CRUD (Create, Read, Update, Delete) ===============**<br/>
+# **======= LANJUTAN CRUD (Create, Read, Update, Delete) =======**<br/>
 </br>
 
 
@@ -443,7 +443,7 @@ $routes->group('admin', function($routes) {
 
 
 
-# **============== LANJUTAN - LOGIN ==============**<br/>
+# **=============== LANJUTAN - LOGIN ===============**<br/>
 </br>
 
 + Membuat Tabel User
