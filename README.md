@@ -48,10 +48,9 @@ Ketika diakses akan muncul tampilan error, artinya file/page tersebut tudak ada.
 + <b>Membuat Controller Page</b>
 </br>
 Buat file baru dengan nama <b>page.php</b> pada direktori Controller, masukkan kode seperti gambar atau bisa mengakses file diatas. Setelah itu, save dan refresh halaman web yang tadi error.
-```<?php
-
+```
+<?php
 namespace App\Controllers;
-
 class Page extends BaseController
 {
     public function about()
