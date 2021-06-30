@@ -636,21 +636,76 @@ Buka url http://localhost:8080/user/login akan tampil halaman seperti gambar dib
 
 >Kode yang ditandai merah pada Routes.php merupakan opsional.
 
+</br>
 + Menambahkan Auth Filter.
 </br>
 Membuat filer untuk halaman admin. Buat file baru dengan nama <b><i>Auth.php</i></b> pada direktori <b><i>app/Filters</i></b>.
 
+```
+<?php namespace App\Filters;
 
+use CodeIgniter\HTTP\RequestInterface; 
+use CodeIgniter\HTTP\ResponseInterface; 
+use CodeIgniter\Filters\FilterInterface;
 
+class Auth implements FilterInterface
+{
+    public function before(RequestInterface $request, $arguments = null)
+    {
+        // Jika user belum login
+        if(! session()->get('logged_in')){
+            // Maka redirct ke halaman login 
+            return redirect()->to('/user/login');
+        }
+    }
 
+    public function after(RequestInterface $request, ResponseInterface $response, $arguments = null)
+    {
+        // Do something here
+    }
+}
+```
 
+</br>
+Buka file <b><i>app/Config/Filters.php</i></b> tambahkan kode berikut.
 
+```
+'auth' => App\Filters\Auth::class,
+```
 
+</br>
+Buka file <b><i>app/Config/Routes.php</i></b> dan sesuaikan kodenya sesuai gambar dibawah
 
+```
+Pada
+$routes->group('admin', function($routes) {
 
+Isikan kode berikut di tengahnya.
+['filter' => 'auth']
 
+Akan menjadi seperti ini
+$routes->group('admin', ['filter' => 'auth'], function($routes) { 
+```
 
+![8](https://user-images.githubusercontent.com/56438848/124001069-70a95c00-d9fe-11eb-9846-eaf13bda58eb.JPG)
 
+Buka url dengan alamat http://localhost:8080/admin/artikel.
+</br>
+Ketika alamat tersebut diakses, maka akan dimuculkan halaman login seperti contoh gambar diatas.
+
+</br>
++ Menambah Fungsi Logout
+Buka <b><i>app/Controllers/Controllers.php</i></b>, tambahkan kode berikut.
+
+```
+    public function logout()
+    {
+        session()->destroy();
+        return redirect()->to('/user/login');
+    }
+```
+
+![9](https://user-images.githubusercontent.com/56438848/124003938-b156a480-da01-11eb-939a-42330c5e4f9a.JPG)
 
 
 
