@@ -48,6 +48,7 @@ Ketika diakses akan muncul tampilan error, artinya file/page tersebut tudak ada.
 + <b>Membuat Controller Page</b>
 </br>
 Buat file baru dengan nama <b>page.php</b> pada direktori Controller, masukkan kode seperti gambar atau bisa mengakses file diatas. Setelah itu, save dan refresh halaman web yang tadi error.
+
 ```
 <?php
 namespace App\Controllers;
@@ -70,7 +71,7 @@ class Page extends BaseController
 }
 ```
 
-> - <b>Tambahan</b> </br>
++ <b>Tambahan</b> </br>
 Ketika halaman tidak muncul dan masih error, coba untuk mengaktifkan perintah <b>php spark serve</b> pada command prompt seperti gambar ini. Pastikan untuk tetap berjalan pada latar belakang.
 ![8 0](https://user-images.githubusercontent.com/56438848/122505651-fb658080-d026-11eb-81bf-9e69aef6a0b1.JPG)
 
