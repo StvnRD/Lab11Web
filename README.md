@@ -18,7 +18,7 @@ Ada beberapa ekstensi lainnya juga untuk pengembangan Codeinteger, seperti berik
 + Buka browser dengan alamat http://localhost/lab11_ci/ci4/public/
 ![1 2](https://user-images.githubusercontent.com/56438848/122497158-20ea8e00-d017-11eb-946e-74b038d787c3.jpg)
 
-
+</br>
 + <b>Menjalankan CLI (Command Line Interface)</b>
 </br>
 Buka XAMPP Control Panel, pilih <b>Shell</b> untuk membuka terminal/command prompt, arahkan sesuai dengan direktori folder <b>lab11_ci</b> seperti pada gambar ini. Perintah yang dapat dijalankan untuk memanggil CLI Codeinteegr adalah <b><i> php spark </b></i>
@@ -40,7 +40,7 @@ Error sebelum diubah
 Gambar dibawah ini adalah setelah mengaktifkan fitur <b>Debugging</b>. Setelah menghapus tanda <b>;</b> pada file <b>app/Controller/Home.php</b>
 ![5](https://user-images.githubusercontent.com/56438848/122504766-2353e480-d025-11eb-8283-3cada7459840.jpg)
 
-
+</br>
 + <b>Membuat Route Baru</b>
 ![7 1](https://user-images.githubusercontent.com/56438848/122505032-ba20a100-d025-11eb-8142-45f33d3bcd60.jpg)
 
@@ -48,7 +48,7 @@ Selanjutnya, akses alamat url http://localhost:8080/about untuk mencoba route ya
 Ketika diakses akan muncul tampilan error, artinya file/page tersebut tudak ada. Untuk dapat mengakses halaman tersebut, buat Controller yang sesuai dengan rooting yang dibuat di <b>Controller Page</b>.
 ![7 2](https://user-images.githubusercontent.com/56438848/122505042-bd1b9180-d025-11eb-8747-14f8c20bc98e.JPG)
 
-
+</br>
 + <b>Membuat Controller Page</b>
 </br>
 Buat file baru dengan nama <b>page.php</b> pada direktori Controller, masukkan kode seperti gambar atau bisa mengakses file diatas. Setelah itu, save dan refresh halaman web yang tadi error.
@@ -75,11 +75,12 @@ class Page extends BaseController
 }
 ```
 
+</br>
 + <b>Tambahan</b> </br>
 Ketika halaman tidak muncul dan masih error, coba untuk mengaktifkan perintah <b>php spark serve</b> pada command prompt seperti gambar ini. Pastikan untuk tetap berjalan pada latar belakang.
 ![8 0](https://user-images.githubusercontent.com/56438848/122505651-fb658080-d026-11eb-81bf-9e69aef6a0b1.JPG)
 
-
+</br>
 + <b> Auto Routing</b>
 </br>
 Auto Routing secara default sudah aktif, untuk mengubah nilai variablenya dapat mengubah <b>true</b> menjadi </b>false<b>. </br>
@@ -91,6 +92,7 @@ Setelah diubah.
 
 ![8 2](https://user-images.githubusercontent.com/56438848/122506268-2b615380-d028-11eb-90b7-5d03a648bac3.JPG)
 
+</br>
 + <b>Membuat View</b>
 </br>
 Buat file baru dengan nama <b>about.php</b> pada direktori <b>app/views</b>. Lihat gambar untuk lebih jelas.
@@ -147,7 +149,7 @@ CREATE TABLE artikel (
 ``` 
 ![1 Koneksi Database  env](https://user-images.githubusercontent.com/56438848/123295366-da79bf80-d53f-11eb-9667-fdf4911cae49.jpg)
 
-
+</br>
 + Membuat Model
 Buat file baru pada direktori/folder <b>app/Models</b> dengan nama <b>ArtikelModel.php</b>
 
@@ -168,7 +170,7 @@ class ArtikelModel extends Model
 } 
 ```
 
-
+</br>
 + Membuat Controller
 Buat controller baru dengan nama <b>Artikel.php</b> pada direktori/folder <b>app/Controller</b>
 ```
@@ -190,7 +192,7 @@ class Artikel extends BaseController
 }
 ```
 
-
+</br>
 + Membuat View
 Buat direktori/folder baru dengan nama <b>artikel</b> didalam direktori/folder <b>app/Views</b>, kemudian buat file baru dengan nama <b>index.php</b>. Jangan lupa menambahkan kode pada file Routing jika tidak muncul sesuai dengan gambar dibawah.
 
@@ -215,7 +217,7 @@ Buat direktori/folder baru dengan nama <b>artikel</b> didalam direktori/folder <
 ```
 ![5 Buat Routing Artikel](https://user-images.githubusercontent.com/56438848/123397957-376f8700-d5cd-11eb-8930-9038cffbea82.jpg)
 
-
+</br>
 + Menambahkan data pada database agar dapat menampilkan data pada halaman artikel.
 
 ```
@@ -229,7 +231,7 @@ Ia berakar dari sebuah naskah sastra latin klasik dari era 45 sebelum masehi, hi
 ![6 1](https://user-images.githubusercontent.com/56438848/123398466-c5e40880-d5cd-11eb-93a7-316e5631f3e1.JPG)
 ![6 2](https://user-images.githubusercontent.com/56438848/123398228-79003200-d5cd-11eb-899c-7e2646748fde.JPG)
 
-
+</br>
 + Membuat Tampilan Detail Artikel
 Pada saat judul berita di klik, maka akan diarahkan ke halaman yang berbeda. Tambahkan kode berikut pada <b>app/Controller/Artikel.php</b>
 
@@ -267,6 +269,7 @@ Membuat view baru untuk halaman detail. Buat file baru pada direktori <b>app/Vie
 <?= $this->include('template/footer'); ?> 
 ```
 
+</br>
 + Membuat Routing
 Buka file <b>app/config/Routes.php</b> kemudian tambahkan routing code ini untuk artikel detail.
 ```
@@ -274,7 +277,7 @@ $routes->get('/artikel/(:any)', 'Artikel::view/$1');
 ```
 ![Tambahan](https://user-images.githubusercontent.com/56438848/123399507-e1034800-d5ce-11eb-948d-eeab43094868.jpg)
 
-
+</br>
 + Membuat menu admin
 Tambahkan method baru pada <b>app/Controllers/Artikel.php</b>
 ```
@@ -288,7 +291,7 @@ Tambahkan method baru pada <b>app/Controllers/Artikel.php</b>
 ```
 ![Tambahan 2](https://user-images.githubusercontent.com/56438848/123400380-e6ad5d80-d5cf-11eb-863b-f3f171f98a1c.JPG)
 
-
+</br>
 + Selanjutnya buat view untuk tampilan admin dengan nama <b>admin_index..php</b> pada direktri <b>app/Views/artikel</b>
 ```
 <?= $this->include('template/admin_header'); ?>
@@ -329,7 +332,7 @@ Tambahkan method baru pada <b>app/Controllers/Artikel.php</b>
 ```
 ![Tambahan 3](https://user-images.githubusercontent.com/56438848/123400646-2ffdad00-d5d0-11eb-9483-582bb80ac9c6.JPG)
 
-
+</br>
 + Tambahkan Routing pada <b>app/Config/Routes.php</b>
 ```
 $routes->group('admin', function($routes) { 
@@ -342,7 +345,7 @@ $routes->group('admin', function($routes) {
 ![Tambahan 4](https://user-images.githubusercontent.com/56438848/123400977-88cd4580-d5d0-11eb-879c-12389e8ae0a3.JPG)
 ![9](https://user-images.githubusercontent.com/56438848/123401115-aac6c800-d5d0-11eb-9ab0-b04989296ce4.JPG)
 
-
+</br>
 + Tambah Data Artikel pada <b>app/Controllers/Artikel.php</b>
 ```
     public function add() 
@@ -368,7 +371,7 @@ $routes->group('admin', function($routes) {
 ```
 ![Tambahan 5](https://user-images.githubusercontent.com/56438848/123401534-1a3cb780-d5d1-11eb-88e0-1835b8f119bb.JPG)
 
-
+</br>
 + Buat view untuk form tambah dengan nama <b>form_add.php</b> pada <app/Views/artikel>
 ```
 <?= $this->include('template/admin_header'); ?>
@@ -388,7 +391,7 @@ $routes->group('admin', function($routes) {
 ```
 ![10](https://user-images.githubusercontent.com/56438848/123401928-6ee03280-d5d1-11eb-8af8-afb5d0785b74.JPG)
 
-
+</br>
 + Menambah Data edit dengan menambahkan fungsi pada <b>app/Controllers/Artikel.php</b>
 ```
         public function edit($id) 
@@ -417,7 +420,7 @@ $routes->group('admin', function($routes) {
 ```
 ![Tambahan 6](https://user-images.githubusercontent.com/56438848/123402735-3ee55f00-d5d2-11eb-80a1-c799bf5170e5.JPG)
 
-
+</br>
 + Buat view untuk form tambah pada direktori <b>app/Views/artikel</b> dengan nama <b>form_edit.php</b>
 ```
 <?= $this->include('template/admin_header'); ?>
@@ -436,7 +439,7 @@ $routes->group('admin', function($routes) {
 ```
 ![11](https://user-images.githubusercontent.com/56438848/123403346-e2367400-d5d2-11eb-8e09-c9df01b99ecc.JPG)
 
-
+</br>
 + Tambahkan fungsi delete pada <b>app/Controllers/Artikel.php</b>
 ```
         public function delete($id)
@@ -481,6 +484,7 @@ class UserModel extends Model
 }
 ```
 
+</br>
 + Membuat Control User
 Buat Controller baru dengan nama User.php pada direktori <b>app/Controllers</b>. Kemudian tambahkan method <b>index()</b> untuk menampilkan daftar user, dan method
 <b>login()</b> untuk proses login.
@@ -542,6 +546,7 @@ class User extends BaseController
 } 
 ```
 
+</br>
 + Membuat View Login
 Buat direktori baru dengan nama user pada direktori <b>app/views</b>, kemudian buat file baru dengan nama <b>login.php</b>.
 ![3](https://user-images.githubusercontent.com/56438848/123955827-4478e580-d9d4-11eb-8b7c-bd1965191e94.JPG)
@@ -575,10 +580,13 @@ Buat direktori baru dengan nama user pada direktori <b>app/views</b>, kemudian b
 </html> 
 ```
 
+</br>
 + Membuat Database Seeder
 Biasanya digunakan untuk membuat data dummy. Untuk keperluan ujicoba modul login, kita perlu memasukkan data user dan password kedaalam database. Untuk itu buat database seeder untuk tabel user. Buka CLI, kemudian tulis perintah berikut:
 ```php spark make:seeder UserSeeder```
 ![4](https://user-images.githubusercontent.com/56438848/123956307-bea96a00-d9d4-11eb-89ef-51a3a362d87a.JPG)
+
+</br>
 Selanjutnya, buka file <b>UserSeeder.php</b> yang berada di lokasi direktori <b>/app/Database/Seeds/UserSeeder.php</b> kemudian isi dengan kode berikut:
 ```<?php
 
@@ -601,16 +609,19 @@ class UserSeeder extends Seeder
 ```
 ![5](https://user-images.githubusercontent.com/56438848/123956420-e26cb000-d9d4-11eb-9278-9a16216d511c.JPG)
 
+</br>
 Selanjutnya buka kembali CLI dan ketik perintah berikut:
-```php spark db:seed UserSeeder```
+```
+php spark db:seed UserSeeder
+```
 ![6](https://user-images.githubusercontent.com/56438848/123956514-f6b0ad00-d9d4-11eb-87e4-31895f130423.JPG)
-
+</br>
 
 + Uji Coba Login
-Buka url http://localhost:8080/user/login seperti berikut:
+Buka url http://localhost:8080/user/login akan tampil halaman seperti gambar dibawah.
+![7](https://user-images.githubusercontent.com/56438848/123996915-0989a880-d9fa-11eb-81d5-1cc0f505573f.JPG)
 
-
-
+>Kode yang ditandai merah pada Routes.php merupakan opsional.
 
 
 
