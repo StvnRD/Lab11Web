@@ -121,9 +121,9 @@ Lengkapi kode program untuk menu lainnya yang ada pada Controller Page, sehingga
 
 ![9](https://user-images.githubusercontent.com/56438848/122508832-d542df00-d02c-11eb-9a17-d844fe4611c4.JPG)
 
-
-
-
+</br>
+</br>
+</br>
 # **====== LANJUTAN CRUD (Create, Read, Update, Delete) ======**<br/>
 </br>
 
