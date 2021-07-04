@@ -173,6 +173,7 @@ class ArtikelModel extends Model
 </br>
 + Membuat Controller
 Buat controller baru dengan nama <b><i>Artikel.php</i></b> pada direktori/folder <b><i>app/Controller</i></b>
+
 ```
 <?php
 
@@ -215,6 +216,7 @@ Buat direktori/folder baru dengan nama <b><i>artikel</i></b> didalam direktori/f
 
 <?= $this->include('template/footer'); ?> 
 ```
+
 ![5 Buat Routing Artikel](https://user-images.githubusercontent.com/56438848/123397957-376f8700-d5cd-11eb-8930-9038cffbea82.jpg)
 
 </br>
@@ -228,7 +230,9 @@ saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan 
 ('Artikel kedua', 'Tidak seperti anggapan banyak orang, Lorem Ipsum bukanlah teks-teks yang diacak. 
 Ia berakar dari sebuah naskah sastra latin klasik dari era 45 sebelum masehi, hingga bisa dipastikan usianya telah mencapai lebih dari 2000 tahun.', 'artikel-kedua');
 ```
+
 ![6 1](https://user-images.githubusercontent.com/56438848/123398466-c5e40880-d5cd-11eb-93a7-316e5631f3e1.JPG)
+
 ![6 2](https://user-images.githubusercontent.com/56438848/123398228-79003200-d5cd-11eb-899c-7e2646748fde.JPG)
 
 </br>
@@ -257,6 +261,7 @@ Pada saat judul berita di klik, maka akan diarahkan ke halaman yang berbeda. Tam
 
 + Membuat View Detail
 Membuat view baru untuk halaman detail. Buat file baru pada direktori <b><i>app/Views/artikel</i></b> dengan nama <b><i>detail.phpl</i></b>
+
 ```
 <?= $this->include('template/header'); ?> 
 
@@ -272,14 +277,17 @@ Membuat view baru untuk halaman detail. Buat file baru pada direktori <b><i>app/
 </br>
 + Membuat Routing
 Buka file <b><i>app/config/Routes.php</i></b> kemudian tambahkan routing code ini untuk artikel detail.
+
 ```
 $routes->get('/artikel/(:any)', 'Artikel::view/$1');
 ```
+
 ![Tambahan](https://user-images.githubusercontent.com/56438848/123399507-e1034800-d5ce-11eb-948d-eeab43094868.jpg)
 
 </br>
 + Membuat menu admin
 Tambahkan method baru pada <b><i>app/Controllers/Artikel.php</i></b>
+
 ```
  public function admin_index() 
     { 
@@ -289,10 +297,12 @@ Tambahkan method baru pada <b><i>app/Controllers/Artikel.php</i></b>
         return view('artikel/admin_index', compact('artikel', 'title')); 
     } 
 ```
+
 ![Tambahan 2](https://user-images.githubusercontent.com/56438848/123400380-e6ad5d80-d5cf-11eb-863b-f3f171f98a1c.JPG)
 
 </br>
 + Selanjutnya buat view untuk tampilan admin dengan nama <b><i>admin_index..php</i></b> pada direktri <b><i>app/Views/artikel</i></b>
+
 ```
 <?= $this->include('template/admin_header'); ?>
 
@@ -330,10 +340,12 @@ Tambahkan method baru pada <b><i>app/Controllers/Artikel.php</i></b>
 
 <?= $this->include('template/admin_footer'); ?> 
 ```
+
 ![Tambahan 3](https://user-images.githubusercontent.com/56438848/123400646-2ffdad00-d5d0-11eb-9483-582bb80ac9c6.JPG)
 
 </br>
 + Tambahkan Routing pada <b><i>app/Config/Routes.php</i></b>
+
 ```
 $routes->group('admin', function($routes) { 
 	$routes->get('artikel', 'Artikel::admin_index'); 
@@ -342,11 +354,14 @@ $routes->group('admin', function($routes) {
 	$routes->get('artikel/delete/(:any)', 'Artikel::delete/$1'); 
 	}); 
 ```
+
 ![Tambahan 4](https://user-images.githubusercontent.com/56438848/123400977-88cd4580-d5d0-11eb-879c-12389e8ae0a3.JPG)
+
 ![9](https://user-images.githubusercontent.com/56438848/123401115-aac6c800-d5d0-11eb-9ab0-b04989296ce4.JPG)
 
 </br>
 + Tambah Data Artikel pada <b>app/Controllers/Artikel.php</b>
+
 ```
     public function add() 
     { 
@@ -369,10 +384,12 @@ $routes->group('admin', function($routes) {
         return view('artikel/form_add', compact('title')); 
         } 
 ```
+
 ![Tambahan 5](https://user-images.githubusercontent.com/56438848/123401534-1a3cb780-d5d1-11eb-88e0-1835b8f119bb.JPG)
 
 </br>
 + Buat view untuk form tambah dengan nama <b><i>form_add.php</i></b> pada <b><i>app/Views/artikel</i></b>
+
 ```
 <?= $this->include('template/admin_header'); ?>
 
@@ -389,10 +406,12 @@ $routes->group('admin', function($routes) {
 
 <?= $this->include('template/admin_footer'); ?>
 ```
+
 ![10](https://user-images.githubusercontent.com/56438848/123401928-6ee03280-d5d1-11eb-8af8-afb5d0785b74.JPG)
 
 </br>
 + Menambah Data edit dengan menambahkan fungsi pada <b><i>app/Controllers/Artikel.php</i></b>
+
 ```
         public function edit($id) 
         { 
@@ -418,10 +437,12 @@ $routes->group('admin', function($routes) {
             return view('artikel/form_edit', compact('title', 'data')); 
         } 
 ```
+
 ![Tambahan 6](https://user-images.githubusercontent.com/56438848/123402735-3ee55f00-d5d2-11eb-80a1-c799bf5170e5.JPG)
 
 </br>
 + Buat view untuk form tambah pada direktori <b><i>app/Views/artikel</i></b> dengan nama <b><i>form_edit.php</i></b>
+
 ```
 <?= $this->include('template/admin_header'); ?>
 
@@ -437,10 +458,12 @@ $routes->group('admin', function($routes) {
 </form>
 <?= $this->include('template/admin_footer'); ?>
 ```
+
 ![11](https://user-images.githubusercontent.com/56438848/123403346-e2367400-d5d2-11eb-8e09-c9df01b99ecc.JPG)
 
 </br>
 + Tambahkan fungsi delete pada <b><i>app/Controllers/Artikel.php</i></b>
+
 ```
         public function delete($id)
         {
@@ -449,6 +472,7 @@ $routes->group('admin', function($routes) {
             return redirect('admin/artikel');
         }
 ```
+
 ![Tambahan 7](https://user-images.githubusercontent.com/56438848/123404335-2d508700-d5d3-11eb-94cc-cd9842e4343a.JPG)
 
 
@@ -459,7 +483,9 @@ $routes->group('admin', function($routes) {
 + Membuat Tabel User.
 </br>
 Pada database lab_ci4, buat tabel baru dengan nama <b><i>user</i></b>. Dan kemudian buat file baru pada direktori <b>app/Models</b> dengan nama <b><i>UserModel.php</i></b>
+
 ![1](https://user-images.githubusercontent.com/56438848/123954781-fdd6bb80-d9d2-11eb-94e5-3710d492405b.JPG)
+
 ``` MEMBUAT TABEL USER
 
 CREATE TABLE user ( 
