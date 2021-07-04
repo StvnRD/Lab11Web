@@ -2,7 +2,7 @@
 </br>
 
 
-+ Konfigurasi ekstensi PHP yang perlu diaktifkan seperti di gambar ini. Untuk mengaktifkan ekstensinya, hapus tanda <b> ; </b>
++ **Konfigurasi ekstensi PHP yang perlu diaktifkan seperti di gambar ini. Untuk mengaktifkan ekstensinya, hapus tanda ; **
 
 ![1 1](https://user-images.githubusercontent.com/56438848/122497153-1f20ca80-d017-11eb-89f1-a8dd2366c7d0.jpg)
 
@@ -21,14 +21,18 @@ Ada beberapa ekstensi lainnya juga untuk pengembangan Codeinteger, seperti berik
 ![1 2](https://user-images.githubusercontent.com/56438848/122497158-20ea8e00-d017-11eb-946e-74b038d787c3.jpg)
 
 </br>
-+ <b>Menjalankan CLI (Command Line Interface)</b>
+
++ **Menjalankan CLI (Command Line Interface)**
+
 </br>
 Buka XAMPP Control Panel, pilih <b><i>Shell</i></b> untuk membuka terminal/command prompt, arahkan sesuai dengan direktori folder <b><i>lab11_ci</i></b> seperti pada gambar ini. Perintah yang dapat dijalankan untuk memanggil CLI Codeinteegr adalah <b><i>php spark</b></i>
 
 ![2](https://user-images.githubusercontent.com/56438848/122503373-842ded80-d022-11eb-9d95-f5edbf912b42.JPG)
 
 </br>
-+ <b>Mengaktifkan Mode Debugging</b>
+
++ **Mengaktifkan Mode Debugging**
+
 </br>
 Codeinteger menyediakan firut <b>Debugging</b> untuk memudahkan developer untuk mengetahui pesan error. Semua jenis error akan ditampilkan. Untuk mengaktifkannya, ubah nilai konfigurasi pada environtmen variable <b><i>CI_ENVIRONMENT</i></b> menjadi <b><i>development</i></b> seperti pada gambar ini. Dan ubah nama file <b><i>env</i></b> menjadi <b><i>.env</i></b>
 
@@ -44,7 +48,7 @@ Gambar dibawah ini adalah setelah mengaktifkan fitur <b>Debugging</b>. Setelah m
 ![5](https://user-images.githubusercontent.com/56438848/122504766-2353e480-d025-11eb-8283-3cada7459840.jpg)
 
 </br>
-+ <b>Membuat Route Baru</b>
++ **Membuat Route Baru**
 
 ![7 1](https://user-images.githubusercontent.com/56438848/122505032-ba20a100-d025-11eb-8142-45f33d3bcd60.jpg)
 
@@ -54,7 +58,9 @@ Ketika diakses akan muncul tampilan error, artinya file/page tersebut tudak ada.
 ![7 2](https://user-images.githubusercontent.com/56438848/122505042-bd1b9180-d025-11eb-8747-14f8c20bc98e.JPG)
 
 </br>
-+ <b>Membuat Controller Page</b>
+
++ **Membuat Controller Page**
+
 </br>
 Buat file baru dengan nama <b><i>page.php</i></b> pada direktori Controller, masukkan kode seperti gambar atau bisa mengakses file diatas. Setelah itu, save dan refresh halaman web yang tadi error.
 
@@ -81,13 +87,19 @@ class Page extends BaseController
 ```
 
 </br>
-+ <b>Tambahan</b> </br>
+
++ **Tambahan**
+
+</br>
+
 Ketika halaman tidak muncul dan masih error, coba untuk mengaktifkan perintah <b>php spark serve</b> pada command prompt seperti gambar ini. Pastikan untuk tetap berjalan pada latar belakang.
 
 ![8 0](https://user-images.githubusercontent.com/56438848/122505651-fb658080-d026-11eb-81bf-9e69aef6a0b1.JPG)
 
 </br>
-+ <b> Auto Routing</b>
+
++ ** Auto Routing**
+
 </br>
 Auto Routing secara default sudah aktif, untuk mengubah nilai variablenya dapat mengubah <b><i>true</i></b> menjadi <b><i>false</i></b>. </br>
 Sebelum diubah.
@@ -99,7 +111,9 @@ Setelah diubah.
 ![8 2](https://user-images.githubusercontent.com/56438848/122506268-2b615380-d028-11eb-90b7-5d03a648bac3.JPG)
 
 </br>
-+ <b>Membuat View</b>
+
++ **Membuat View**
+
 </br>
 Buat file baru dengan nama <b>about.php</b> pada direktori <b><i>app/views</i></b>. Lihat gambar untuk lebih jelas.
 
@@ -140,7 +154,7 @@ Lengkapi kode program untuk menu lainnya yang ada pada Controller Page, sehingga
 </br>
 
 
-+ Membuat Database dan Tabel pada <b><i>phpmyadmin</i></b> dan mengatur koneksi Database
++ **Membuat Database dan Tabel pada <b><i>phpmyadmin</i></b> dan mengatur koneksi Database**
 
 ``` Membuat Database
 CREATE DATABASE lab_ci4
@@ -160,7 +174,7 @@ CREATE TABLE artikel (
 ![1 Koneksi Database  env](https://user-images.githubusercontent.com/56438848/123295366-da79bf80-d53f-11eb-9667-fdf4911cae49.jpg)
 
 </br>
-+ Membuat Model
++ **Membuat Model**
 
 Buat file baru pada direktori/folder <b><i>app/Models</i></b> dengan nama <b><i>ArtikelModel.php</i></b>
 
@@ -182,7 +196,7 @@ class ArtikelModel extends Model
 ```
 
 </br>
-+ Membuat Controller
++ **Membuat Controller**
 
 Buat controller baru dengan nama <b><i>Artikel.php</i></b> pada direktori/folder <b><i>app/Controller</i></b>
 
@@ -207,7 +221,7 @@ class Artikel extends BaseController
 
 </br>
 
-+ Membuat View
++ **Membuat View**
 
 Buat direktori/folder baru dengan nama <b><i>artikel</i></b> didalam direktori/folder <b><i>app/Views</i></b>, kemudian buat file baru dengan nama <b><i>index.php</i></b>. Jangan lupa menambahkan kode pada file Routing jika tidak muncul sesuai dengan gambar dibawah.
 
@@ -235,7 +249,7 @@ Buat direktori/folder baru dengan nama <b><i>artikel</i></b> didalam direktori/f
 
 </br>
 
-+ Menambahkan data pada database agar dapat menampilkan data pada halaman artikel.
++ **Menambahkan data pada database agar dapat menampilkan data pada halaman artikel**
 
 ```
 INSERT INTO artikel (judul, isi, slug) 
@@ -252,7 +266,7 @@ Ia berakar dari sebuah naskah sastra latin klasik dari era 45 sebelum masehi, hi
 
 </br>
 
-+ Membuat Tampilan Detail Artikel
++ **Membuat Tampilan Detail Artikel**
 
 Pada saat judul berita di klik, maka akan diarahkan ke halaman yang berbeda. Tambahkan kode berikut pada <b><i>app/Controller/Artikel.php</i></b>
 
@@ -276,7 +290,7 @@ Pada saat judul berita di klik, maka akan diarahkan ke halaman yang berbeda. Tam
 ```
 
 
-+ Membuat View Detail
++ **Membuat View Detail**
 
 Membuat view baru untuk halaman detail. Buat file baru pada direktori <b><i>app/Views/artikel</i></b> dengan nama <b><i>detail.phpl</i></b>
 
@@ -294,7 +308,7 @@ Membuat view baru untuk halaman detail. Buat file baru pada direktori <b><i>app/
 
 </br>
 
-+ Membuat Routing
++ **Membuat Routing**
 
 Buka file <b><i>app/config/Routes.php</i></b> kemudian tambahkan routing code ini untuk artikel detail.
 
@@ -306,7 +320,7 @@ $routes->get('/artikel/(:any)', 'Artikel::view/$1');
 
 </br>
 
-+ Membuat menu admin
++ **Membuat menu admin**
 
 Tambahkan method baru pada <b><i>app/Controllers/Artikel.php</i></b>
 
@@ -324,7 +338,7 @@ Tambahkan method baru pada <b><i>app/Controllers/Artikel.php</i></b>
 
 </br>
 
-+ Selanjutnya buat view untuk tampilan admin dengan nama <b><i>admin_index..php</i></b> pada direktri <b><i>app/Views/artikel</i></b>
++ **Selanjutnya buat view untuk tampilan admin dengan nama <i>admin_index..php</i> pada direktri <i>app/Views/artikel</i>**
 
 ```
 <?= $this->include('template/admin_header'); ?>
@@ -368,7 +382,7 @@ Tambahkan method baru pada <b><i>app/Controllers/Artikel.php</i></b>
 
 </br>
 
-+ Tambahkan Routing pada <b><i>app/Config/Routes.php</i></b>
++ **Tambahkan Routing pada <i>app/Config/Routes.php</i>**
 
 ```
 $routes->group('admin', function($routes) { 
@@ -385,7 +399,7 @@ $routes->group('admin', function($routes) {
 
 </br>
 
-+ Tambah Data Artikel pada <b>app/Controllers/Artikel.php</b>
++ **Tambah Data Artikel pada <i>app/Controllers/Artikel.php</i>**
 
 ```
     public function add() 
@@ -414,7 +428,7 @@ $routes->group('admin', function($routes) {
 
 </br>
 
-+ Buat view untuk form tambah dengan nama <b><i>form_add.php</i></b> pada <b><i>app/Views/artikel</i></b>
++ **Buat view untuk form tambah dengan nama <i>form_add.php</i> pada <i>app/Views/artikel</i>**
 
 ```
 <?= $this->include('template/admin_header'); ?>
@@ -437,7 +451,7 @@ $routes->group('admin', function($routes) {
 
 </br>
 
-+ Menambah Data edit dengan menambahkan fungsi pada <b><i>app/Controllers/Artikel.php</i></b>
++ **Menambah Data edit dengan menambahkan fungsi pada <i>app/Controllers/Artikel.php</i>**
 
 ```
         public function edit($id) 
@@ -469,7 +483,7 @@ $routes->group('admin', function($routes) {
 
 </br>
 
-+ Buat view untuk form tambah pada direktori <b><i>app/Views/artikel</i></b> dengan nama <b><i>form_edit.php</i></b>
++ **Buat view untuk form tambah pada direktori <i>app/Views/artikel</i> dengan nama <i>form_edit.php</i>**
 
 ```
 <?= $this->include('template/admin_header'); ?>
@@ -491,7 +505,7 @@ $routes->group('admin', function($routes) {
 
 </br>
 
-+ Tambahkan fungsi delete pada <b><i>app/Controllers/Artikel.php</i></b>
++ **Tambahkan fungsi delete pada <i>app/Controllers/Artikel.php</i>**
 
 ```
         public function delete($id)
@@ -509,7 +523,7 @@ $routes->group('admin', function($routes) {
 # **=========== LANJUTAN - LOGIN ===========**<br/>
 </br>
 
-+ Membuat Tabel User.
++ **Membuat Tabel User**
 
 </br>
 Pada database lab_ci4, buat tabel baru dengan nama <b><i>user</i></b>. Dan kemudian buat file baru pada direktori <b>app/Models</b> dengan nama <b><i>UserModel.php</i></b>
@@ -543,7 +557,7 @@ class UserModel extends Model
 
 </br>
 
-+ Membuat Control User.
++ **Membuat Control User**
 
 </br>
 Buat Controller baru dengan nama User.php pada direktori <b>app/Controllers</b>. Kemudian tambahkan method <b><i>index()</i></b> untuk menampilkan daftar user, dan method
@@ -609,7 +623,7 @@ class User extends BaseController
 
 </br>
 
-+ Membuat View Login.
++ **Membuat View Login**
 
 </br>
 Buat direktori baru dengan nama user pada direktori <b><i>app/views</i></b>, kemudian buat file baru dengan nama <b><i>login.php</i></b>.
@@ -648,7 +662,7 @@ Buat direktori baru dengan nama user pada direktori <b><i>app/views</i></b>, kem
 
 </br>
 
-+ Membuat Database Seeder
++ **Membuat Database Seeder**
 
 Biasanya digunakan untuk membuat data dummy. Untuk keperluan ujicoba modul login, kita perlu memasukkan data user dan password kedaalam database. Untuk itu buat database seeder untuk tabel user. Buka CLI, kemudian tulis perintah berikut:
 
@@ -694,7 +708,7 @@ php spark db:seed UserSeeder
 
 </br>
 
-+ Uji Coba Login
++ **Uji Coba Login**
 
 Buka url    <b> http://localhost:8080/user/login </b>    akan tampil halaman seperti gambar dibawah.
 
@@ -704,7 +718,7 @@ Buka url    <b> http://localhost:8080/user/login </b>    akan tampil halaman sep
 
 </br>
 
-+ Menambahkan Auth Filter
++ **Menambahkan Auth Filter**
 
 </br>
 Membuat filer untuk halaman admin. Buat file baru dengan nama <b><i>Auth.php</i></b> pada direktori <b><i>app/Filters</i></b>.
@@ -763,7 +777,7 @@ Ketika alamat tersebut diakses, maka akan dimuculkan halaman login seperti conto
 
 </br>
 
-+ Menambah Fungsi Logout
++ **Menambah Fungsi Logout**
 
 Buka <b><i>app/Controllers/Controllers.php</i></b>, tambahkan kode berikut.
 
