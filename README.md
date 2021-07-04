@@ -668,7 +668,7 @@ php spark db:seed UserSeeder
 
 </br>
 + Uji Coba Login
-Buka url <b> http://localhost:8080/user/login </b> akan tampil halaman seperti gambar dibawah.
+Buka url    <b> http://localhost:8080/user/login </b>    akan tampil halaman seperti gambar dibawah.
 
 ![7](https://user-images.githubusercontent.com/56438848/123996915-0989a880-d9fa-11eb-81d5-1cc0f505573f.JPG)
 
@@ -727,7 +727,7 @@ $routes->group('admin', ['filter' => 'auth'], function($routes) {
 
 ![8](https://user-images.githubusercontent.com/56438848/124001069-70a95c00-d9fe-11eb-9846-eaf13bda58eb.JPG)
 
-Buka url dengan alamat http://localhost:8080/admin/artikel.
+Buka url dengan alamat   <b>  http://localhost:8080/admin/artikel  </b>
 </br>
 Ketika alamat tersebut diakses, maka akan dimuculkan halaman login seperti contoh gambar diatas.
 
