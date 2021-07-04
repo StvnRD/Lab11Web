@@ -668,7 +668,7 @@ php spark db:seed UserSeeder
 
 </br>
 + Uji Coba Login
-Buka url http://localhost:8080/user/login akan tampil halaman seperti gambar dibawah.
+Buka url <b> http://localhost:8080/user/login </b> akan tampil halaman seperti gambar dibawah.
 
 ![7](https://user-images.githubusercontent.com/56438848/123996915-0989a880-d9fa-11eb-81d5-1cc0f505573f.JPG)
 
