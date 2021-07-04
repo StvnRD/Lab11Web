@@ -3,6 +3,7 @@
 
 
 + Konfigurasi ekstensi PHP yang perlu diaktifkan seperti di gambar ini. Untuk mengaktifkan ekstensinya, hapus tanda <b> ; </b>
+
 ![1 1](https://user-images.githubusercontent.com/56438848/122497153-1f20ca80-d017-11eb-89f1-a8dd2366c7d0.jpg)
 
 Ada beberapa ekstensi lainnya juga untuk pengembangan Codeinteger, seperti berikut.
@@ -16,6 +17,7 @@ Ada beberapa ekstensi lainnya juga untuk pengembangan Codeinteger, seperti berik
 + Unduh <b><i>Codeinteger</i></b> di web https://codeigniter.com/download
 + Ubah nama direktory framework-4.x.xx menjadi ci4. Dan taruh kedalam folder <b><i>lab11_ci</i></b>
 + Buka browser dengan alamat http://localhost/lab11_ci/ci4/public/
+
 ![1 2](https://user-images.githubusercontent.com/56438848/122497158-20ea8e00-d017-11eb-946e-74b038d787c3.jpg)
 
 </br>
@@ -38,14 +40,17 @@ Error sebelum diubah
 ![4 2](https://user-images.githubusercontent.com/56438848/122504640-e0920c80-d024-11eb-9221-c3ad0fd5380b.JPG)
 
 Gambar dibawah ini adalah setelah mengaktifkan fitur <b>Debugging</b>. Setelah menghapus tanda <b>;</b> pada file <b><i>app/Controller/Home.php</i></b>
+
 ![5](https://user-images.githubusercontent.com/56438848/122504766-2353e480-d025-11eb-8283-3cada7459840.jpg)
 
 </br>
 + <b>Membuat Route Baru</b>
+
 ![7 1](https://user-images.githubusercontent.com/56438848/122505032-ba20a100-d025-11eb-8142-45f33d3bcd60.jpg)
 
 Selanjutnya, akses alamat url http://localhost:8080/about untuk mencoba route yang telah dibuat.
 Ketika diakses akan muncul tampilan error, artinya file/page tersebut tudak ada. Untuk dapat mengakses halaman tersebut, buat Controller yang sesuai dengan rooting yang dibuat di <b><i>Controller Page</i></b>.
+
 ![7 2](https://user-images.githubusercontent.com/56438848/122505042-bd1b9180-d025-11eb-8747-14f8c20bc98e.JPG)
 
 </br>
@@ -78,6 +83,7 @@ class Page extends BaseController
 </br>
 + <b>Tambahan</b> </br>
 Ketika halaman tidak muncul dan masih error, coba untuk mengaktifkan perintah <b>php spark serve</b> pada command prompt seperti gambar ini. Pastikan untuk tetap berjalan pada latar belakang.
+
 ![8 0](https://user-images.githubusercontent.com/56438848/122505651-fb658080-d026-11eb-81bf-9e69aef6a0b1.JPG)
 
 </br>
@@ -108,12 +114,15 @@ Buat file baru dengan nama <b>about.php</b> pada direktori <b><i>app/views</i></
 </br>
 
 + Buat file css pada direktori <b><i>Public</i></b> dengan nama <b><i>style.css</i></b>. <i>Copy file layout dari Praktikum 4</i>.
+
 ![8 1](https://user-images.githubusercontent.com/56438848/122508213-cd366f80-d02b-11eb-9452-960209b920cd.JPG)
 
 + Buat folder <b>template</b> pada direktori view. Kemudian buat file <b>header.php</b> dan <b>footer.php</b>
+
 ![8 2](https://user-images.githubusercontent.com/56438848/122508398-269e9e80-d02c-11eb-8afc-813243eb24f8.JPG)
 
 + Isikan kode seperti dibawah ini, bisa diakses pada file diatas. Save dan buka url http://localhost:8080/about
+
 ![8 3](https://user-images.githubusercontent.com/56438848/122508436-33bb8d80-d02c-11eb-9083-d9fc382d11ac.JPG)
 </br>
 </br>
@@ -147,6 +156,7 @@ CREATE TABLE artikel (
     PRIMARY KEY(id) 
 );
 ``` 
+
 ![1 Koneksi Database  env](https://user-images.githubusercontent.com/56438848/123295366-da79bf80-d53f-11eb-9667-fdf4911cae49.jpg)
 
 </br>
