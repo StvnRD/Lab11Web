@@ -150,7 +150,7 @@ Lengkapi kode program untuk menu lainnya yang ada pada Controller Page, sehingga
 </br>
 </br>
 
-# **== P12 - CRUD (Create, Read, Update, Delete) ==**
+# **===== P12 - CRUD (Create, Read, Update, Delete) =====**
 </br>
 
 
@@ -520,7 +520,7 @@ $routes->group('admin', function($routes) {
 
 
 
-# **=========== P13 - LOGIN ===========**<br/>
+# **============== P13 - LOGIN =============**<br/>
 </br>
 
 + **Membuat Tabel User**
