@@ -64,8 +64,7 @@ Ketika diakses akan muncul tampilan error, artinya file/page tersebut tudak ada.
 </br>
 Buat file baru dengan nama <b><i>page.php</i></b> pada direktori Controller, masukkan kode seperti gambar atau bisa mengakses file diatas. Setelah itu, save dan refresh halaman web yang tadi error.
 
-```
-<?php
+```<?php
 namespace App\Controllers;
 class Page extends BaseController
 {
@@ -178,8 +177,7 @@ CREATE TABLE artikel (
 
 Buat file baru pada direktori/folder <b><i>app/Models</i></b> dengan nama <b><i>ArtikelModel.php</i></b>
 
-```
-<?php 
+```<?php 
 
 namespace App\Models; 
 
@@ -200,8 +198,7 @@ class ArtikelModel extends Model
 
 Buat controller baru dengan nama <b><i>Artikel.php</i></b> pada direktori/folder <b><i>app/Controller</i></b>
 
-```
-<?php
+```<?php
 
 namespace App\Controllers;
 
@@ -225,8 +222,7 @@ class Artikel extends BaseController
 
 Buat direktori/folder baru dengan nama <b><i>artikel</i></b> didalam direktori/folder <b><i>app/Views</i></b>, kemudian buat file baru dengan nama <b><i>index.php</i></b>. Jangan lupa menambahkan kode pada file Routing jika tidak muncul sesuai dengan gambar dibawah.
 
-```
-<?= $this->include('template/header'); ?> 
+```<?= $this->include('template/header'); ?> 
 
 <?php if($artikel): foreach($artikel as $row): ?> 
 <article class="entry"> 
@@ -251,8 +247,7 @@ Buat direktori/folder baru dengan nama <b><i>artikel</i></b> didalam direktori/f
 
 + **Menambahkan data pada database agar dapat menampilkan data pada halaman artikel**
 
-```
-INSERT INTO artikel (judul, isi, slug) 
+```INSERT INTO artikel (judul, isi, slug) 
 VALUE ('Artikel pertama', 'Lorem Ipsum adalah contoh teks atau dummy dalam industri percetakan dan penataan huruf atau typesetting.
 Lorem Ipsum telah menjadi standar contoh teks sejak tahun 1500an, 
 saat seorang tukang cetak yang tidak dikenal mengambil sebuah kumpulan teks dan mengacaknya untuk menjadi sebuah buku contoh huruf.', 'artikel-pertama'), 
@@ -270,8 +265,7 @@ Ia berakar dari sebuah naskah sastra latin klasik dari era 45 sebelum masehi, hi
 
 Pada saat judul berita di klik, maka akan diarahkan ke halaman yang berbeda. Tambahkan kode berikut pada <b><i>app/Controller/Artikel.php</i></b>
 
-```
-    public function view($slug)
+```    public function view($slug)
     {
         $model = new ArtikelModel();
         $artikel = $model->where([
@@ -294,8 +288,7 @@ Pada saat judul berita di klik, maka akan diarahkan ke halaman yang berbeda. Tam
 
 Membuat view baru untuk halaman detail. Buat file baru pada direktori <b><i>app/Views/artikel</i></b> dengan nama <b><i>detail.phpl</i></b>
 
-```
-<?= $this->include('template/header'); ?> 
+```<?= $this->include('template/header'); ?> 
 
 <article class="entry"> 
     <h2><?= $artikel['judul']; ?></h2> 
@@ -312,9 +305,7 @@ Membuat view baru untuk halaman detail. Buat file baru pada direktori <b><i>app/
 
 Buka file <b><i>app/config/Routes.php</i></b> kemudian tambahkan routing code ini untuk artikel detail.
 
-```
-$routes->get('/artikel/(:any)', 'Artikel::view/$1');
-```
+```$routes->get('/artikel/(:any)', 'Artikel::view/$1');```
 
 ![Tambahan](https://user-images.githubusercontent.com/56438848/123399507-e1034800-d5ce-11eb-948d-eeab43094868.jpg)
 
@@ -324,8 +315,7 @@ $routes->get('/artikel/(:any)', 'Artikel::view/$1');
 
 Tambahkan method baru pada <b><i>app/Controllers/Artikel.php</i></b>
 
-```
- public function admin_index() 
+``` public function admin_index() 
     { 
         $title = 'Daftar Artikel'; 
         $model = new ArtikelModel(); 
@@ -340,8 +330,7 @@ Tambahkan method baru pada <b><i>app/Controllers/Artikel.php</i></b>
 
 + **Selanjutnya buat view untuk tampilan admin dengan nama <i>admin_index..php</i> pada direktri <i>app/Views/artikel</i>**
 
-```
-<?= $this->include('template/admin_header'); ?>
+```<?= $this->include('template/admin_header'); ?>
 
 <table class="table">
     <thread>
@@ -384,8 +373,7 @@ Tambahkan method baru pada <b><i>app/Controllers/Artikel.php</i></b>
 
 + **Tambahkan Routing pada <i>app/Config/Routes.php</i>**
 
-```
-$routes->group('admin', function($routes) { 
+```$routes->group('admin', function($routes) { 
 	$routes->get('artikel', 'Artikel::admin_index'); 
 	$routes->add('artikel/add', 'Artikel::add'); 
 	$routes->add('artikel/edit/(:any)', 'Artikel::edit/$1'); 
@@ -401,8 +389,7 @@ $routes->group('admin', function($routes) {
 
 + **Tambah Data Artikel pada <i>app/Controllers/Artikel.php</i>**
 
-```
-    public function add() 
+```    public function add() 
     { 
         // validasi data. 
         $validation = \Config\Services::validation(); 
@@ -430,8 +417,7 @@ $routes->group('admin', function($routes) {
 
 + **Buat view untuk form tambah dengan nama <i>form_add.php</i> pada <i>app/Views/artikel</i>**
 
-```
-<?= $this->include('template/admin_header'); ?>
+```<?= $this->include('template/admin_header'); ?>
 
 <h2><?= $title; ?></h2>
 <form action="" method="post">
@@ -453,8 +439,7 @@ $routes->group('admin', function($routes) {
 
 + **Menambah Data edit dengan menambahkan fungsi pada <i>app/Controllers/Artikel.php</i>**
 
-```
-        public function edit($id) 
+```        public function edit($id) 
         { 
             $artikel = new ArtikelModel(); 
 
@@ -485,8 +470,7 @@ $routes->group('admin', function($routes) {
 
 + **Buat view untuk form tambah pada direktori <i>app/Views/artikel</i> dengan nama <i>form_edit.php</i>**
 
-```
-<?= $this->include('template/admin_header'); ?>
+```<?= $this->include('template/admin_header'); ?>
 
 <h2><?= $title; ?></h2>
 <form action="" method="post">
@@ -507,8 +491,7 @@ $routes->group('admin', function($routes) {
 
 + **Tambahkan fungsi delete pada <i>app/Controllers/Artikel.php</i>**
 
-```
-        public function delete($id)
+```        public function delete($id)
         {
             $artikel = new ArtikelModel();
             $artikel->delete($id);
@@ -565,8 +548,7 @@ Buat Controller baru dengan nama User.php pada direktori <b>app/Controllers</b>.
 
 ![2](https://user-images.githubusercontent.com/56438848/123955279-a258fd80-d9d3-11eb-8dd0-ef695c4de861.JPG)
 
-```
-<?php 
+```<?php 
 namespace App\Controllers; 
 use App\Models\UserModel; 
 class User extends BaseController 
@@ -630,8 +612,7 @@ Buat direktori baru dengan nama user pada direktori <b><i>app/views</i></b>, kem
 
 ![3](https://user-images.githubusercontent.com/56438848/123955827-4478e580-d9d4-11eb-8b7c-bd1965191e94.JPG)
 
-```
-<!DOCTYPE html> 
+```<!DOCTYPE html> 
 <html lang="en"> 
 <head> 
     <meta charset="UTF-8"> 
@@ -700,9 +681,7 @@ class UserSeeder extends Seeder
 </br>
 Selanjutnya buka kembali CLI dan ketik perintah berikut:
 
-```
-php spark db:seed UserSeeder
-```
+```php spark db:seed UserSeeder```
 
 ![6](https://user-images.githubusercontent.com/56438848/123956514-f6b0ad00-d9d4-11eb-87e4-31895f130423.JPG)
 
@@ -723,8 +702,7 @@ Buka url    <b> http://localhost:8080/user/login </b>    akan tampil halaman sep
 </br>
 Membuat filer untuk halaman admin. Buat file baru dengan nama <b><i>Auth.php</i></b> pada direktori <b><i>app/Filters</i></b>.
 
-```
-<?php namespace App\Filters;
+```<?php namespace App\Filters;
 
 use CodeIgniter\HTTP\RequestInterface; 
 use CodeIgniter\HTTP\ResponseInterface; 
@@ -751,15 +729,13 @@ class Auth implements FilterInterface
 </br>
 Buka file <b><i>app/Config/Filters.php</i></b> tambahkan kode berikut.
 
-```
-'auth' => App\Filters\Auth::class,
+```'auth' => App\Filters\Auth::class,
 ```
 
 </br>
 Buka file <b><i>app/Config/Routes.php</i></b> dan sesuaikan kodenya sesuai gambar dibawah
 
-```
-Pada
+```Pada
 $routes->group('admin', function($routes) {
 
 Isikan kode berikut di tengahnya.
@@ -781,8 +757,7 @@ Ketika alamat tersebut diakses, maka akan dimuculkan halaman login seperti conto
 
 Buka <b><i>app/Controllers/Controllers.php</i></b>, tambahkan kode berikut.
 
-```
-    public function logout()
+```    public function logout()
     {
         session()->destroy();
         return redirect()->to('/user/login');
@@ -790,6 +765,149 @@ Buka <b><i>app/Controllers/Controllers.php</i></b>, tambahkan kode berikut.
 ```
 
 ![9](https://user-images.githubusercontent.com/56438848/124003938-b156a480-da01-11eb-939a-42330c5e4f9a.JPG)
+
+</br>
+</br>
+
+# **============== P13 - LOGOUT =============**<br/>
+
++ **Membuat Pagination (Menu Page)**
+
+Buka **<i>/app/Controllers/Artikel.php</i>**, modifikasi method **<i>admin_index</i>** dengan kode dan seperti gambar dibawah.
+
+```    public function admin_index() 
+    { 
+        $title = 'Daftar Artikel'; 
+        $model = new ArtikelModel(); 
+        $data = [
+            'title' => $title,
+            'artikel' => $model->paginate(10), #per halaman data dibatasi 10 record 
+            'pager' => $model->pager,
+        ];
+        return view('artikel/admin_index', $data);
+    } 
+
+```
+
+![1](https://user-images.githubusercontent.com/56438848/124791906-b45c1280-df76-11eb-89ee-5776559af0c0.JPG)
+
+</br>
+
+Tambahkan kode berikut ini pada **<i>/app/Views/artikel/admin_index.php</i>**
+
+```
+<?= $pager->links(); ?>
+```
+
+![1 2](https://user-images.githubusercontent.com/56438848/124791915-b58d3f80-df76-11eb-9a8d-63b90c119cdc.JPG)
+
+</br>
+
+Hasil output.
+
+![1 Hasil](https://user-images.githubusercontent.com/56438848/124792447-377d6880-df77-11eb-9a71-efadb0d184fa.JPG)
+
+</br>
+
++ **Membuat Table Pencarian**
+
+Buka **<i>/app/Controllers/Artikel.php</i>**, tambahkan kode seperti dibawah ini.
+
+```    public function admin_index() 
+    { 
+        $title = 'Daftar Artikel'; 
+        $q = $this->request->getVar('q') ?? '';
+        $model = new ArtikelModel(); 
+        $data = [
+            'title' => $title,
+            'q' => $q,
+            'artikel' => $model->paginate(10), #per halaman data dibatasi 10 record 
+            'pager' => $model->pager,
+        ];
+        return view('artikel/admin_index', $data);
+    } 
+```
+
+![2 1](https://user-images.githubusercontent.com/56438848/124793895-a4ddc900-df78-11eb-85aa-6fe88f34e59d.JPG)
+
+</br>
+
+Kemudian buka file **<i>/app/Views/artikel/admin_index.php</i>**, dan tambahkan kode ini sebelum deklarasi table.
+
+```<form method="get" class="form-search">
+    <input type="text" name="q" value="<?= $q; ?>" placeholder="Cari data">
+    <input type="submit" value="Cari" class="btn btn-primary">
+</form>
+```
+
+</br>
+Dan ubah link page menjadi seperti ini
+
+```<?= $pager->only(['q'])->links(); ?>```
+
+![2 2](https://user-images.githubusercontent.com/56438848/124793973-b921c600-df78-11eb-81d4-ea523210185b.JPG)
+
+</br>
+Hasil output.
+
+![2 Pencarian](https://user-images.githubusercontent.com/56438848/124794078-d6569480-df78-11eb-9b89-170657dd84d9.JPG)
+
+
+</br>
+
++ **Menambah Fungsi Menu Upload Gambar**
+
+Buka **<i>/app/Controllers/Artikel.php</i>**, modifikasi method **<i>add</i>** dengan kode seperti dibawah ini.
+
+```    public function add() 
+    { 
+        // validasi data. 
+        $validation = \Config\Services::validation(); 
+        $validation->setRules(['judul' => 'required']); 
+        $isDataValid = $validation->withRequest($this->request)->run(); 
+        
+        if ($isDataValid) 
+        { 
+            $file = $this->request->getFile('gambar');
+            $file->move(ROOTPATH . 'public/gambar');
+            $artikel = new ArtikelModel(); 
+            $artikel->insert([ 
+                'judul' => $this->request->getPost('judul'), 
+                'isi' => $this->request->getPost('isi'), 
+                'slug' => url_title($this->request->getPost('judul')), 
+                'gambar' => $file->getName(),
+            ]); 
+            return redirect('admin/artikel'); 
+        } 
+        $title = "Tambah Artikel"; 
+        return view('artikel/form_add', compact('title')); 
+        } 
+```
+
+![3 1](https://user-images.githubusercontent.com/56438848/124794772-917f2d80-df79-11eb-8e71-c37c7460ca74.JPG)
+
+</br>
+
+Kemudian buka file **<i>/app/Views/artikel/from_add.php</i>** 
+
+```    <p>
+        <input type="file" name="gambar">
+    </p>
+```
+
+</br>
+
+Dan tambahkan **<i>ecrypt type</i>** seperti berikut.
+
+```<form action="" method="post" enctype="multipart/form-data">```
+
+![3 2](https://user-images.githubusercontent.com/56438848/124797027-02274980-df7c-11eb-9aa9-8099ed6bf5aa.JPG)
+
+
+</br>
+Hasil output.
+
+![3 Hasil Input Gambar](https://user-images.githubusercontent.com/56438848/124797079-13705600-df7c-11eb-8c63-23d898304512.JPG)
 
 
 
