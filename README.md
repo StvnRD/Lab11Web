@@ -799,6 +799,13 @@ Buka <b><i>app/Controllers/Controllers.php</i></b>, tambahkan kode berikut.
 
 # **============== P13 - LOGOUT =============**<br/>
 
+Login pada halaman login menggunakan akun dibawah ini.
+
+```
+admin@email.com
+admin123
+```
+
 + **Membuat Pagination (Menu Page)**
 
 Buka **<i>/app/Controllers/Artikel.php</i>**, modifikasi method **<i>admin_index</i>** dengan kode dan seperti gambar dibawah.
